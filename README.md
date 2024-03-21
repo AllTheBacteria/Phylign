@@ -133,14 +133,6 @@ brew install conda
 brew install gnu-time
 ```
 
-Install Python (=3.9.0), Snakemake (=7.32.4), and Mamba (optional but
-recommended) using Conda:
-
-```bash
-conda env create -f enivronment.yaml && conda activate phylign
-```
-
-
 ### 3b) Step 2: Clone the repository
 
 Clone the Phylign repository from GitHub and navigate into the directory:
@@ -148,6 +140,12 @@ Clone the Phylign repository from GitHub and navigate into the directory:
 ```bash
  git clone https://github.com/karel-brinda/phylign
  cd phylign
+```
+
+### 3c) Step 3: Install dependencies
+
+```bash
+conda env create -f enivronment.yaml && conda activate phylign
 ```
 
 ## 4. Usage
