@@ -66,15 +66,6 @@ cleanall: clean ## Clean all generated and downloaded files
 conda: ## Create the conda environments
 	snakemake $(SMK_PARAMS) --conda-create-envs-only
 
-download: ## Download the assemblies and COBS indexes
-	snakemake download $(SMK_PARAMS) $(DOWNLOAD_PARAMS)
-
-download_asms: ## Download only the assemblies
-	snakemake download_asms_batches $(SMK_PARAMS) $(DOWNLOAD_PARAMS)
-
-download_cobs: ## Download only the COBS indexes
-	snakemake download_cobs_batches $(SMK_PARAMS) $(DOWNLOAD_PARAMS)
-
 match: ## Match queries using COBS (queries -> candidates)
 	scripts/benchmark.py --log logs/benchmarks/match_$(DATETIME).txt "snakemake match $(SMK_PARAMS)"
 
@@ -110,11 +101,6 @@ cluster_slurm: ## Submit to a SLURM cluster
 cluster_lsf: ## Submit to LSF cluster
 	scripts/check_if_config_is_ok_for_cluster_run.py
 	scripts/submit_lsf.sh
-
-cluster_lsf_test: ## Submit the test pipeline to LSF cluster
-	scripts/check_if_config_is_ok_for_cluster_run.py
-	scripts/submit_lsf.sh test
-
 
 ####################
 ## For developers ##
