@@ -145,7 +145,7 @@ Clone the Phylign repository from GitHub and navigate into the directory:
 ### 3c) Step 3: Install dependencies
 
 ```bash
-conda env create -f enivronment.yaml && conda activate phylign
+conda env create -f environment.yaml && conda activate phylign
 ```
 
 ## 4. Usage
