@@ -1,8 +1,0 @@
-name: phylign
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - python=3.9.0
-  - snakemake=7.32.4
