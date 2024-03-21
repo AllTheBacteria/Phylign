@@ -133,7 +133,7 @@ brew install conda
 brew install gnu-time
 ```
 
-Install Python (=3.9), Snakemake (=7.3.2), and Mamba (optional but
+Install Python (=3.9.0), Snakemake (=7.32.4), and Mamba (optional but
 recommended) using Conda:
 
 ```bash
