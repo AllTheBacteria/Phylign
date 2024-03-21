@@ -23,7 +23,7 @@ ifeq ($(SMK_CLUSTER_ARGS),)
     SMK_PARAMS=--cores ${THREADS} --rerun-incomplete --printshellcmds --keep-going --use-conda --resources max_download_threads=$(MAX_DOWNLOAD_THREADS) max_io_heavy_threads=$(MAX_IO_HEAVY_THREADS) max_ram_mb=$(MAX_RAM_MB)
 else
     # configure cluster run
-    SMK_PARAMS=--cores all --rerun-incomplete --printshellcmds --keep-going --use-conda --resources max_download_threads=10000000 max_io_heavy_threads=10000000 max_ram_mb=1000000000 $(SMK_CLUSTER_ARGS)
+    SMK_PARAMS=--cores ${THREADS} --rerun-incomplete --printshellcmds --keep-going --use-conda --resources max_download_threads=$(MAX_DOWNLOAD_THREADS) max_io_heavy_threads=$(MAX_IO_HEAVY_THREADS) max_ram_mb=$(MAX_RAM_MB) $(SMK_CLUSTER_ARGS)
 endif
 
 DOWNLOAD_PARAMS=--cores $(MAX_DOWNLOAD_THREADS) -j $(MAX_DOWNLOAD_THREADS) --restart-times $(DOWNLOAD_RETRIES)
@@ -33,7 +33,6 @@ DOWNLOAD_PARAMS=--cores $(MAX_DOWNLOAD_THREADS) -j $(MAX_DOWNLOAD_THREADS) --res
 ## General commands ##
 ######################
 all: ## Run everything (the default rule)
-	make download
 	make match
 	make map
 
@@ -93,8 +92,8 @@ report: ## Generate Snakemake report
 
 cluster_slurm: ## Submit to a SLURM cluster
 	sbatch \
-        -c 10 \
-        --mem=80GB \
+        -c ${THREADS} \
+        --mem=$(MAX_RAM_MB) \
         -t 0-08:00:00 \
         --wrap="make"
 
