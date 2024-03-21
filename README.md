@@ -282,8 +282,7 @@ quite light and usually start running as soon as they are scheduled.
 
 **For LSF clusters:**
 
-1. Test if the pipeline is working on a LSF cluster: `make cluster_lsf_test`;
-2. Configure you queries and run the full pipeline: `make cluster_lsf`;
+1. Configure you queries and run the full pipeline: `make cluster_lsf`;
 
 
 ### 5e) Known limitations
