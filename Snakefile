@@ -147,8 +147,8 @@ print(f"Batches: {batches}")
 qfiles = get_all_query_filepaths()
 print(f"Query files: {list(map(str, qfiles))}")
 
-assemblies_dir = Path(f"{config['download_dir']}/asms")
-cobs_dir = Path(f"{config['download_dir']}/cobs")
+assemblies_dir = Path(f"./asms")
+cobs_dir = Path(f"./cobs")
 decompression_dir = Path(
     config.get("decompression_dir", "intermediate/02_cobs_decompressed")
 )
