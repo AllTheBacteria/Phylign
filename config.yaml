@@ -48,14 +48,14 @@ minimap_extra_params: "--eqx"
 
 # overall number of threads to use in the pipeline, an integer number (e.g. 8 for 8 threads) or "all" (to use all threads)
 # WARNING: this parameter is ignored when running on a cluster
-threads: 48
+threads: 8
 
 # maximum RAM to use in GB - this should be at most 80% of your max RAM
 # note: if you use more than your available RAM, constant page swapping will happen and the pipeline will severely
 # slow down.
 # if index_load_mode == mmap-disk, then this parameter is ignored as the OS will manage RAM usage
 # WARNING: this parameter is ignored when running on a cluster
-max_ram_gb: 50
+max_ram_gb: 15
 ##################################################
 
 ##################################################
