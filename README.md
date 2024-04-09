@@ -235,7 +235,6 @@ Here's a list of all implemented commands (to be executed as `make {command}`):
 [Snakefmt](https://github.com/snakemake/snakefmt), which can be installed by
 `conda install -c conda-forge -c bioconda yapf snakefmt`.
 
-
 ### 5b) Directories
 
 * `asms/`, `cobs/` Downloaded assemblies and COBS indexes
@@ -251,8 +250,6 @@ Here's a list of all implemented commands (to be executed as `make {command}`):
    * `05_map/` Minimap2 alignments
 * `logs/` Logs and benchmarks
 * `output/` The resulting files (in a headerless SAM format)
-
-
 
 ### 5c) File formats
 
@@ -282,8 +279,12 @@ quite light and usually start running as soon as they are scheduled.
 
 **For LSF clusters:**
 
-1. Configure you queries and run the full pipeline: `make cluster_lsf`;
+1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/lsf).
+2. Configure you queries and run the full pipeline: `make cluster_lsf`;
 
+**For SLURM clusters:**
+1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/slurm).
+2. Configure you queries and run the full pipeline: `make cluster_slurm`;
 
 ### 5e) Known limitations
 

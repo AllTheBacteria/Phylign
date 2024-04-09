@@ -63,10 +63,10 @@ conda: ## Create the conda environments
 	snakemake $(SMK_PARAMS) --conda-create-envs-only
 
 match: ## Match queries using COBS (queries -> candidates)
-	scripts/benchmark.py --log logs/benchmarks/match_$(DATETIME).txt "snakemake match $(SMK_PARAMS)"
+	scripts/benchmark.py --log logs/benchmarks/match_$(DATETIME).txt "snakemake --unlock && snakemake match $(SMK_PARAMS)"
 
 map: ## Map candidates to assemblies (candidates -> alignments)
-	scripts/benchmark.py --log logs/benchmarks/map_$(DATETIME).txt   "snakemake map $(SMK_PARAMS)"
+	scripts/benchmark.py --log logs/benchmarks/map_$(DATETIME).txt   "snakemake --unlock && snakemake map $(SMK_PARAMS)"
 
 ###############
 ## Reporting ##
@@ -88,15 +88,14 @@ report: ## Generate Snakemake report
 #############
 
 cluster_slurm: ## Submit to a SLURM cluster
-	sbatch \
-        -c ${THREADS} \
-        --mem=$(MAX_RAM_MB) \
-        -t 0-08:00:00 \
-        --wrap="make"
+	snakemake --unlock
+	scripts/check_if_config_is_ok_for_cluster_run.py
+	snakemake --profile slurm --use-conda --rerun-incomplete
 
 cluster_lsf: ## Submit to LSF cluster
+	snakemake --unlock
 	scripts/check_if_config_is_ok_for_cluster_run.py
-	scripts/submit_lsf.sh
+	snakemake --profile lsf --use-conda --rerun-incomplete
 
 ####################
 ## For developers ##

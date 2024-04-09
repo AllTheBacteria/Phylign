@@ -179,16 +179,6 @@ wildcard_constraints:
     batch=".+__\d+",
 
 
-if keep_cobs_indexes:
-
-    ruleorder: decompress_cobs > run_cobs > decompress_and_run_cobs
-
-else:
-
-    ruleorder: decompress_and_run_cobs > decompress_cobs > run_cobs
-
-
-
 ##################################
 ## Top-level rules
 ##################################
@@ -275,74 +265,6 @@ partial_cobs_threads = functools.partial(
     streaming=streaming,
 )
 
-
-rule decompress_cobs:
-    """Decompress cobs indexes
-
-    Note threads: The same number as of COBS threads to ensure that COBS is executed immediately after decompression
-    """
-    output:
-        cobs_index=f"{decompression_dir}/{{batch}}.cobs_classic",
-    input:
-        xz=f"{cobs_dir}/{{batch}}.cobs_classic.xz",
-        decompressed_indexes_sizes="data/decompressed_indexes_sizes.txt",
-    resources:
-        max_io_heavy_threads=1,
-        mem_mb=lambda wildcards, input: int(
-            get_xz_decompress_RAM_in_MB(wildcards, input) * 1.25
-        ),
-    params:
-        cobs_index_tmp=f"{decompression_dir}/{{batch}}.cobs_classic.tmp",
-    threads: partial_cobs_threads
-    shell:
-        """
-        ./scripts/benchmark.py --log logs/benchmarks/decompress_cobs/{wildcards.batch}.txt \\
-            'xzcat --no-sparse --ignore-check "{input.xz}" > "{params.cobs_index_tmp}" \\
-            && mv "{params.cobs_index_tmp}" "{output.cobs_index}"'
-        """
-
-
-rule run_cobs:
-    """Cobs matching
-    """
-    output:
-        match="intermediate/03_match/{batch}____{qfile}.gz",
-    input:
-        cobs_index=f"{decompression_dir}/{{batch}}.cobs_classic",
-        fa="intermediate/01_queries_merged/{qfile}.fa",
-        decompressed_indexes_sizes="data/decompressed_indexes_sizes.txt",
-    resources:
-        max_io_heavy_threads=int(cobs_is_an_IO_heavy_job),
-        max_ram_mb=lambda wildcards, input: get_uncompressed_batch_size_in_MB(
-            wildcards, input, ignore_RAM, streaming
-        ),
-        mem_mb=lambda wildcards, input: int(
-            get_uncompressed_batch_size_in_MB(wildcards, input, ignore_RAM, streaming)
-            + 1024
-        ),
-    threads: partial_cobs_threads
-    params:
-        kmer_thres=config["cobs_kmer_thres"],
-        load_complete="--load-complete" if load_complete else "",
-        nb_best_hits=config["nb_best_hits"],
-    priority: 999
-    conda:
-        "envs/cobs.yaml"
-    shell:
-        """
-        ./scripts/benchmark.py --log logs/benchmarks/run_cobs/{wildcards.batch}____{wildcards.qfile}.txt \\
-            'cobs query \\
-                    {params.load_complete} \\
-                    -t {params.kmer_thres} \\
-                    -T {threads} \\
-                    -i {input.cobs_index} \\
-                    -f {input.fa} \\
-                | ./scripts/postprocess_cobs.py -n {params.nb_best_hits} \\
-                | gzip --fast \\
-                > {output.match}'
-        """
-
-
 rule decompress_and_run_cobs:
     """Decompress Cobs index and run Cobs matching
     """
@@ -371,6 +293,7 @@ rule decompress_and_run_cobs:
         nb_best_hits=config["nb_best_hits"],
         uncompressed_batch_size=get_uncompressed_batch_size,
         streaming=int(streaming),
+        keep_cobs_indexes=config["keep_cobs_indexes"]
     conda:
         "envs/cobs.yaml"
     shell:
@@ -397,7 +320,10 @@ rule decompress_and_run_cobs:
                     | ./scripts/postprocess_cobs.py -n {params.nb_best_hits} \\
                     | gzip --fast\\
                     > {output.match}'
-            rm -v "{params.cobs_index}"
+            if [ {params.keep_cobs_indexes} == False ]
+            then
+                rm -v "{params.cobs_index}"
+            fi
         fi
         """
 
@@ -440,7 +366,7 @@ rule batch_align_minimap2:
         sam="intermediate/05_map/{batch}____{qfile}.sam.gz",
     input:
         qfa="intermediate/04_filter/{qfile}.fa",
-        asm=f"{assemblies_dir}/{{batch}}.tar.xz",
+        asm=f"{assemblies_dir}/{{batch}}.asm.tar.xz",
     log:
         log="logs/05_map/{batch}____{qfile}.log",
     params:
