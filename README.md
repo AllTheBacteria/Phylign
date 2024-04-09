@@ -35,11 +35,13 @@ all within only several hours.
   * [3a) Step 1: Install dependencies](#3a-step-1-install-dependencies)
   * [3b) Step 2: Clone the repository](#3b-step-2-clone-the-repository)
 * [4. Usage](#4-usage)
-  * [4a) Step 1: Copy or symlink your queries](#4a-step-1-copy-or-symlink-your-queries)
-  * [4b) Step 2: Adjust configuration](#4b-step-2-adjust-configuration)
-  * [4c) Step 3: Clean up intermediate files](#4c-step-3-clean-up-intermediate-files)
-  * [4d) Step 4: Run the pipeline](#4d-step-4-run-the-pipeline)
-  * [4e) Step 5: Analyze your results](#4e-step-5-analyze-your-results)
+  * [4a) Step 1: Copy or symlink the assemblies](#4c-step-1-copy-or-symlink-the-assemblies)
+  * [4b) Step 2: Copy or symlink the compressed COBS indices](#4c-step-1-copy-or-symlink-the-compressed-cobs-indices)
+  * [4c) Step 3: Copy or symlink your queries](#4c-step-1-copy-or-symlink-your-queries)
+  * [4d) Step 4: Adjust configuration](#4d-step-2-adjust-configuration)
+  * [4e) Step 5: Clean up intermediate files](#4e-step-3-clean-up-intermediate-files)
+  * [4f) Step 6: Run the pipeline](#4f-step-4-run-the-pipeline)
+  * [4g) Step 7: Analyze your results](#4g-step-5-analyze-your-results)
 * [5. Additional information](#5-additional-information)
   * [5a) List of workflow commands](#5a-list-of-workflow-commands)
   * [5b) Directories](#5b-directories)
@@ -150,7 +152,15 @@ conda env create -f environment.yaml && conda activate phylign
 
 ## 4. Usage
 
-### 4a) Step 1: Copy or symlink your queries
+### 4a) Step 1: Copy or symlink the assemblies
+
+Copy or symlink the miniphy-compressed batches of assemblies you want to map to and place them in `asms/`.
+
+### 4b) Step 2: Copy or symlink the compressed COBS indices
+
+Copy or symlink the miniphy-cobs compressed batches of search indices you want to query and place them in `cobs/`. Each batch in `asms/` should have a matching index in `cobs/`.
+
+### 4c) Step 3: Copy or symlink your queries
 
 Remove the default test files or your old files in the `input/` directory and
 copy or symlink (recommended) your query files. The supported input formats are
@@ -162,23 +172,23 @@ merged together.
 * Queries should not contain non-ACGT characters. All non-`ACGT` characters in your query sequences will be translated to `A`.
 
 
-### 4b) Step 2: Adjust configuration
+### 4d) Step 4: Adjust configuration
 
 Edit the [`config.yaml`](config.yaml) file for your desired search. All
 available options are documented directly there.
 
-### 4c) Step 3: Clean up intermediate files
+### 4e) Step 5: Clean up intermediate files
 
 Run `make clean` to clean intermediate files from the previous runs. This
 includes COBS matching files, alignment files, and various reports.
 
-### 4d) Step 4: Run the pipeline
+### 4f) Step 6: Run the pipeline
 
 Simply run `make`, which will execute Snakemake with the corresponding
 parameters. If you want to run the pipeline step by step, run `make match`
 followed by `make map`.
 
-### 4e) Step 5: Analyze your results
+### 4g) Step 7: Analyze your results
 
 Check the output files in `output/` (for more info about formats, see
 [5c) File formats](#5c-file-formats)).
