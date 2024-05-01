@@ -140,7 +140,7 @@ brew install gnu-time
 Clone the Phylign repository from GitHub and navigate into the directory:
 
 ```bash
- git clone https://github.com/Danderson123/Phylign
+ git clone https://github.com/AllTheBacteria/Phylign
  cd phylign
 ```
 
