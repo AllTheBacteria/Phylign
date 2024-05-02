@@ -92,11 +92,9 @@ and visit the [associated website](https://brinda.eu/mof).
 ### 2a) Hardware
 
 Phylign requires a standard desktop or laptop computer with an \*nix system,
-and it can also run on a cluster. The minimal hardware requirements are **12 GB
-RAM** and approximately **120 GB of disk space** (102 GB for the database and
-a margin for intermediate files).
+and it can also run on a cluster.
 
-**WARNING: Phylign does not currently work on devices with ARM processors.**
+**WARNING: Phylign does not currently work on systems with ARM processors.**
 
 
 ### 2b) Dependencies
