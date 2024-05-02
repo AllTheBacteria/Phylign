@@ -45,9 +45,10 @@ all within only several hours.
 * [5. Additional information](#5-additional-information)
   * [5a) List of workflow commands](#5a-list-of-workflow-commands)
   * [5b) Directories](#5b-directories)
-  * [5c) File formats](#5c-file-formats)
-  * [5d) Running on a cluster](#5d-running-on-a-cluster)
-  * [5e) Known limitations](#5e-known-limitations)
+  * [5c) Querying a subset of the AllTheBacteria dataset](#5c-querying-a-subset-of-the-allthebacteria-dataset)
+  * [5d) File formats](#5d-file-formats)
+  * [5e) Running on a cluster](#5e-running-on-a-cluster)
+  * [5f) Known limitations](#5f-known-limitations)
 * [6. License](#6-license)
 * [7. Contacts](#7-contacts)
 
@@ -263,7 +264,11 @@ Here's a list of all implemented commands (to be executed as `make {command}`):
 * `logs/` Logs and benchmarks
 * `output/` The resulting files (in a headerless SAM format)
 
-### 5c) File formats
+### 5c) Querying a subset of the AllTheBacteria dataset
+
+It is possible to run Phylign on a subset of the AllTheBacteria assemblies if e.g. you only want to query a certain species or your resources are limited. This can be done by downloading the desired assemblies and COBS indices and following the steps described in [Usage](#4-usage). You then need to modify `data/batches_2m.txt` to only include batches you have assemblies and compressed COBS indices for. E.g. to search only `asms/salmonella_enterica__81.asm.tar.xz` using the compressed index `cobs/salmonella_enterica__81.cobs_classic.xz`, you must modify the file to only include `salmonella_enterica__81`. Alternatively, you can create a new `.txt` file with one batch per line, and set the `batches` variable in `config.yaml` to the path of this new file.
+
+### 5d) File formats
 
 **Input files:** FASTA or FASTQ files possibly compressed by gzipped. The files
 are searched in the `input/` directory, as files with the following suffixes:
@@ -284,7 +289,7 @@ FASTA files in `asms/`, although this functionality is not
 currently implemented.
 
 
-### 5d) Running on a cluster
+### 5e) Running on a cluster
 
 Running on a cluster is much faster as the jobs produced by this pipeline are
 quite light and usually start running as soon as they are scheduled.
@@ -298,7 +303,7 @@ quite light and usually start running as soon as they are scheduled.
 1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/slurm).
 2. Configure you queries and run the full pipeline: `make cluster_slurm`;
 
-### 5e) Known limitations
+### 5f) Known limitations
 
 * **Swapping if the number of queries too high.** If the number of queries is
   too high (e.g., 10M Illumina reads), the auxiliary Python scripts start to
