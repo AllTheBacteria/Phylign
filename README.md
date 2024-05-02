@@ -1,4 +1,4 @@
-# Phylign – alignment to all pre-2019 bacteria (former MOF-Search)
+# Phylign – search for sequences in the AllTheBacteria v0.2 dataset
 
 <p>
 <a href="https://brinda.eu/mof">
@@ -94,6 +94,8 @@ Phylign requires a standard desktop or laptop computer with an \*nix system,
 and it can also run on a cluster. The minimal hardware requirements are **12 GB
 RAM** and approximately **120 GB of disk space** (102 GB for the database and
 a margin for intermediate files).
+
+**WARNING: Phylign does not currently work on devices with ARM processors.**
 
 
 ### 2b) Dependencies
