@@ -105,9 +105,6 @@ you have [Conda](https://docs.conda.io/en/latest/miniconda.html) installed with
 the following packages:
 
 * [GNU Time](https://www.gnu.org/software/time/) (on Linux present by default; on OS X, install with `brew install gnu-time`).
-* [Python](https://www.python.org/) (>=3.7)
-* [Snakemake](https://snakemake.github.io) (>=6.2.0)
-* [Mamba](https://mamba.readthedocs.io/) (>= 0.20.0) - optional, but recommended
 
 Additionally, Phylign uses standard Unix tools like
 [GNU Make](https://www.gnu.org/software/make/),
