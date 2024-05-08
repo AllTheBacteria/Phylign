@@ -96,6 +96,8 @@ conda env create -f environment.yaml && conda activate phylign
 
 ## 4. Usage
 
+**Default usage is to run locally.** How to run on a cluster is described in point 6 below.
+
 ### 4a) Step 1: Copy or symlink the assemblies
 
 Copy or symlink the miniphy-compressed batches of assemblies you want to map to and place them in `asms/`.
