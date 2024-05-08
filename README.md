@@ -26,11 +26,11 @@ to align batches of queries to them by
 The central idea behind Phylign is
  -  have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
 ([paper](https://doi.org/10.1101/2023.04.15.536996)). We batch them by species, and compress each batch. Some species have so many genomes that they have many batches.
- - have a set of kmer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
+ - have a set of *k*-mer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
  - decompress the candidate genomes and then align to them using minimap.
 
 
-**In short** to do this, you will need this repo cloned, the assembly batches, the COBs (kmer) indexes, in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
+**In short** to do this, you will to clone this repo and place the assembly batches and the COBs (*k*-mer) indices in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
 
 
 ## 2. Requirements
@@ -108,8 +108,7 @@ Copy or symlink the miniphy-cobs compressed batches of search indices you want t
 
 Remove the default test files or your old files in the `input/` directory and
 copy or symlink (recommended) your query files. The supported input formats are
-FASTA and FASTQ, possibly gzipped. All query files will be preprocessed and
-merged together.
+FASTA and FASTQ, possibly gzipped.
 
 *Notes:*
 * All query names have to be unique among all query files.
@@ -142,23 +141,36 @@ your search parameters, go to Step 2. If only the mapping part is affected by
 the changes, you proceed more rapidly by manually removing the files in
 `intermediate/05_map` and `output/` and running directly `make map`.
 
-For additional info see the additional info file.
+## 5. Querying a subset of the AllTheBacteria dataset
 
-## 6. License
+It is possible to run Phylign on a subset of the AllTheBacteria assemblies if e.g. you only want to query a certain species or your resources are limited. This can be done by downloading the desired assemblies and COBS indices and following the steps described in [Usage](#4-usage). You then need to modify `data/batches_2m.txt` to only include batches you have assemblies and compressed COBS indices for. E.g. to search only `asms/salmonella_enterica__81.asm.tar.xz` using the compressed index `cobs/salmonella_enterica__81.cobs_classic.xz`, you must modify the file to only include `salmonella_enterica__81`. Alternatively, you can create a new `.txt` file with one batch per line, and set the `batches` variable in `config.yaml` to the path of this new file.
+
+## 6. Running on a cluster
+
+Running on a cluster is much faster as the jobs produced by this pipeline are
+quite light and usually start running as soon as they are scheduled.
+
+**For LSF clusters:**
+
+1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/lsf).
+2. Configure you queries and run the full pipeline: `make cluster_lsf`;
+
+**For SLURM clusters:**
+1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/slurm).
+2. Configure you queries and run the full pipeline: `make cluster_slurm`;
+
+For additional info see the [additional info file](README.additional_info.md).
+
+## 7. License
 
 [MIT](https://github.com/AllTheBacteria/Phylign/blob/main/LICENSE)
 
-
-### Citation
+## 8. Citation
 
 > K. Břinda, L. Lima, S. Pignotti, N. Quinones-Olvera, K. Salikhov, R. Chikhi, G. Kucherov, Z. Iqbal, and M. Baym. **[Efficient and Robust Search of Microbial Genomes via Phylogenetic Compression.](https://doi.org/10.1101/2023.04.15.536996)** *bioRxiv* 2023.04.15.536996, 2023. https://doi.org/10.1101/2023.04.15.536996
 
-
-
-
-
-## 7. Contacts
+## 9. Contacts
 If you want to know about All The Bacteria, contact [Zamin Iqbal] \<zi245@bath.ac.uk\> or [John Lees] \<jlees@ebi.ac.uk\>.
-If you want to know about Phylign on All the Bacteria, contact [Dan Anderson] \<dander@ebi.ac.uk\> or [Wei Shen] \<shenwei@gmail.com\> 
+If you want to know about Phylign on All the Bacteria, contact [Daniel Anderson] \<dander@ebi.ac.uk\> or [Wei Shen] \<shenwei@gmail.com\>.
 If you want to know about Phylign generallym contact [Karel Brinda](https://brinda.eu) \<karel.brinda@inria.fr\>.
 
