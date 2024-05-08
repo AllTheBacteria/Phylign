@@ -4,16 +4,13 @@
 <a href="https://brinda.eu/mof">
     <img src="docs/logo_wbg.svg" align="left" style="width:100px;" />
 </a>
-Alignment to
-<a href="https://doi.org/10.1371/journal.pbio.3001421">all pre-2019 bacteria from ENA</a>
-on standard desktop and laptops computers.
+Alignment to the ATB v0.2 dataset; can be done on a single laptop/server or a cluster.
 Phylign uses
 <a href="https://brinda.eu/mof">
 phylogenetically compressed assemblies and their <i>k</i>-mer
 indexes</a>
 to align batches of queries to them by
-<a href="https://github.com/lh3/minimap2">Minimap 2</a>,
-all within only several hours.
+<a href="https://github.com/lh3/minimap2">Minimap 2</a>.
 </p><br/>
 
 [![Info](https://img.shields.io/badge/Project-Info-blue)](https://brinda.eu/mof)
@@ -61,18 +58,15 @@ The central idea behind Phylign, enabling alignment locally at such a large
 scale, is [**phylogenetic compression**](https://brinda.eu/mof)
 ([paper](https://doi.org/10.1101/2023.04.15.536996)) - a technique based on
 using estimated evolutionary history to guide compression and search of large
-genome collections using existing algorithms and data structures.
+genome collections using existing algorithms and data structures. 
 
-In short, input data are reorganized according to the topology of the estimated
+In short, input data are batched and reordered according to the topology of the estimated
 phylogenies, which makes data highly locally compressible even using basic
 techniques. Existing software packages for compression, indexing, and search
 - in this case [XZ](https://tukaani.org/xz/),
 [COBS](https://github.com/iqbal-lab-org/cobs), and
 [Minimap2](https://github.com/lh3/minimap2) - are then used as low-level tools.
-The resulting performance gains come from a wide range of benefits of
-phylogenetic compression, including easy parallelization, small memory
-requirements, small database size, better memory locality, and better branch
-prediction.
+
 
 For more information about phylogenetic compression and the implementation
 details of Phylign, see the [corresponding
