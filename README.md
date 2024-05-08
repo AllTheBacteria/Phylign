@@ -26,7 +26,7 @@ to align batches of queries to them by
 The central idea behind Phylign is
  -  have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
 ([paper](https://doi.org/10.1101/2023.04.15.536996)). We batch them by species, and compress each batch. Some species have so many genomes that they have many batches.
- - have a set of *k*-mer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
+ - have a set of *k*-mer indexes, one per batch, and use them to decide which batches contain likely hits for a query. We use a k-mer index called COBS (https://github.com/iqbal-lab-org/cobs)
  - decompress the candidate genomes and then align to them using minimap.
 
 
