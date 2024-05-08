@@ -26,7 +26,7 @@ to align batches of queries to them by
 The central idea behind Phylign is
  -  have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
 ([paper](https://doi.org/10.1101/2023.04.15.536996)). We batch them by species, and compress each batch. Some species have so many genomes that they have many batches.
- - have a set of *k*-mer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
+ - have a set of *k*-mer indexes, one per batch, and use them to decide which batches contain likely hits for a query. We use a k-mer index called COBS (https://github.com/iqbal-lab-org/cobs)
  - decompress the candidate genomes and then align to them using minimap.
 
 
@@ -95,6 +95,8 @@ conda env create -f environment.yaml && conda activate phylign
 ```
 
 ## 4. Usage
+
+**Default usage is to run locally and use all available CPUs. This is going to be very slow if you it on a laptop. A 48-core machine brings it down to an hour or so to query a single gene. ** How to run on a cluster is described in point 6 below.
 
 ### 4a) Step 1: Copy or symlink the assemblies
 
