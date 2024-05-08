@@ -170,7 +170,7 @@ quite light and usually start running as soon as they are scheduled.
 > K. Břinda, L. Lima, S. Pignotti, N. Quinones-Olvera, K. Salikhov, R. Chikhi, G. Kucherov, Z. Iqbal, and M. Baym. **[Efficient and Robust Search of Microbial Genomes via Phylogenetic Compression.](https://doi.org/10.1101/2023.04.15.536996)** *bioRxiv* 2023.04.15.536996, 2023. https://doi.org/10.1101/2023.04.15.536996
 
 ## 9. Contacts
-If you want to know about All The Bacteria, contact Zamin Iqbal (zi245@bath.ac.uk) or John Lees (jlees@ebi.ac.uk).
-If you want to know about Phylign on All the Bacteria, contact Daniel Anderson (dander@ebi.ac.uk) or Wei Shen (shenwei@gmail.com).
-If you want to know about Phylign generallym contact [Karel Brinda](https://brinda.eu) (karel.brinda@inria.fr).
+* If you want to know about All The Bacteria, contact Zamin Iqbal (zi245@bath.ac.uk) or John Lees (jlees@ebi.ac.uk).
+* If you want to know about Phylign on All the Bacteria, contact Daniel Anderson (dander@ebi.ac.uk) or Wei Shen (shenwei@gmail.com).
+* If you want to know about Phylign generally contact [Karel Brinda](https://brinda.eu) (karel.brinda@inria.fr).
 
