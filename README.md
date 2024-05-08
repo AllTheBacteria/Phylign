@@ -171,6 +171,6 @@ quite light and usually start running as soon as they are scheduled.
 
 ## 9. Contacts
 * If you want to know about All The Bacteria, contact Zamin Iqbal (zi245@bath.ac.uk) or John Lees (jlees@ebi.ac.uk).
-* If you want to know about Phylign on All the Bacteria, contact Daniel Anderson (dander@ebi.ac.uk) or Wei Shen (shenwei@gmail.com).
+* If you want to know about Phylign on All the Bacteria, contact Daniel Anderson (dander@ebi.ac.uk) or Wei Shen (shenwei356@gmail.com).
 * If you want to know about Phylign generally contact [Karel Brinda](https://brinda.eu) (karel.brinda@inria.fr).
 
