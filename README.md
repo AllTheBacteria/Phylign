@@ -23,22 +23,13 @@ to align batches of queries to them by
 
 ## 1. Introduction
 
-The central idea behind Phylign, enabling alignment locally at such a large
-scale, is [**phylogenetic compression**](https://brinda.eu/mof)
-([paper](https://doi.org/10.1101/2023.04.15.536996)). In short, input data are batched and reordered according to the topology of the estimated
-phylogenies, which makes data highly locally compressible even using basic
-techniques. Existing software packages for compression, indexing, and search
-- in this case [XZ](https://tukaani.org/xz/),
-[COBS](https://github.com/iqbal-lab-org/cobs), and
-[Minimap2](https://github.com/lh3/minimap2) - are then used as low-level tools.
+The central idea behind Phylign is
+a) have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
+([paper](https://doi.org/10.1101/2023.04.15.536996)). We batch them by species, and compress each batch. Some species have so many genomes that they have many batches.
+b) have a set of kmer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
+c) decompress the candidate genomes and then align to them using minimap.
 
-
-For more information about phylogenetic compression and the implementation
-details of Phylign, see the [corresponding
-paper](https://www.biorxiv.org/content/10.1101/2023.04.15.536996v2) (including
-its [supplementary
-material](https://www.biorxiv.org/content/biorxiv/early/2023/04/18/2023.04.15.536996/DC1/embed/media-1.pdf)
-and visit the [associated website](https://brinda.eu/mof).
+To do this, you will need this repo cloned, the assembly batches, the COBs (kmer) indexes, in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
 
 
 ## 2. Requirements
