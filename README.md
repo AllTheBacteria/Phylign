@@ -98,11 +98,11 @@ conda env create -f environment.yaml && conda activate phylign
 
 ### 4a) Step 1: Copy or symlink the assemblies
 
-Copy or symlink the miniphy-compressed batches of assemblies you want to map to and place them in `asms/`.
+Copy or symlink the miniphy-compressed batches of assemblies that you want to map to and place them in `asms/`. The assemblies can be found at https://ftp.ebi.ac.uk/pub/databases/AllTheBacteria/Releases/0.2/assembly/.
 
 ### 4b) Step 2: Copy or symlink the compressed COBS indices
 
-Copy or symlink the miniphy-cobs compressed batches of search indices you want to query and place them in `cobs/`. Each batch in `asms/` should have a matching index in `cobs/`.
+Copy or symlink the miniphy-cobs compressed batches of search indices you want to query and place them in `cobs/`. Each batch in `asms/` should have a matching index in `cobs/`. The search indices can be found here https://ftp.ebi.ac.uk/pub/databases/AllTheBacteria/Releases/0.2/indexes/phylign/.
 
 ### 4c) Step 3: Copy or symlink your queries
 
