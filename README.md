@@ -42,8 +42,12 @@ and it can also run on a cluster.
 
 **WARNING: Phylign does not currently work on systems with ARM processors.**
 
+### 2b) Data
+Get the assemblies using this command.
+Get the indexes using this command
 
-### 2b) Dependencies
+### 2c) Dependencies
+
 
 Phylign is implemented as a [Snakemake](https://snakemake.github.io)
 pipeline, using the Conda system to manage non-standard dependencies. Ensure
