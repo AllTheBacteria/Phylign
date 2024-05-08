@@ -24,12 +24,13 @@ to align batches of queries to them by
 ## 1. Introduction
 
 The central idea behind Phylign is
-a) have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
+ -  have a highly compressed set of assemblies, which you want to map to. This is done (losslessly) using [**phylogenetic compression**](https://brinda.eu/mof)
 ([paper](https://doi.org/10.1101/2023.04.15.536996)). We batch them by species, and compress each batch. Some species have so many genomes that they have many batches.
-b) have a set of kmer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
-c) decompress the candidate genomes and then align to them using minimap.
+ - have a set of kmer indexes, one per batch, and use them to decide which batches contain likely hits for a query.
+ - decompress the candidate genomes and then align to them using minimap.
 
-To do this, you will need this repo cloned, the assembly batches, the COBs (kmer) indexes, in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
+
+**In short** to do this, you will need this repo cloned, the assembly batches, the COBs (kmer) indexes, in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
 
 
 ## 2. Requirements
