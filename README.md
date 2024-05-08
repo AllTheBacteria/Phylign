@@ -41,11 +41,6 @@ material](https://www.biorxiv.org/content/biorxiv/early/2023/04/18/2023.04.15.53
 and visit the [associated website](https://brinda.eu/mof).
 
 
-### Citation
-
-> K. Břinda, L. Lima, S. Pignotti, N. Quinones-Olvera, K. Salikhov, R. Chikhi, G. Kucherov, Z. Iqbal, and M. Baym. **[Efficient and Robust Search of Microbial Genomes via Phylogenetic Compression.](https://doi.org/10.1101/2023.04.15.536996)** *bioRxiv* 2023.04.15.536996, 2023. https://doi.org/10.1101/2023.04.15.536996
-
-
 ## 2. Requirements
 
 ### 2a) Hardware
@@ -160,6 +155,13 @@ For additional info see the additional info file.
 ## 6. License
 
 [MIT](https://github.com/AllTheBacteria/Phylign/blob/main/LICENSE)
+
+
+### Citation
+
+> K. Břinda, L. Lima, S. Pignotti, N. Quinones-Olvera, K. Salikhov, R. Chikhi, G. Kucherov, Z. Iqbal, and M. Baym. **[Efficient and Robust Search of Microbial Genomes via Phylogenetic Compression.](https://doi.org/10.1101/2023.04.15.536996)** *bioRxiv* 2023.04.15.536996, 2023. https://doi.org/10.1101/2023.04.15.536996
+
+
 
 
 
