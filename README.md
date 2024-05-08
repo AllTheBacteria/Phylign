@@ -141,6 +141,8 @@ your search parameters, go to Step 2. If only the mapping part is affected by
 the changes, you proceed more rapidly by manually removing the files in
 `intermediate/05_map` and `output/` and running directly `make map`.
 
+For additional info see the [additional info file](README.additional_info.md).
+
 ## 5. Querying a subset of the AllTheBacteria dataset
 
 It is possible to run Phylign on a subset of the AllTheBacteria assemblies if e.g. you only want to query a certain species or your resources are limited. This can be done by downloading the desired assemblies and COBS indices and following the steps described in [Usage](#4-usage). You then need to modify `data/batches_2m.txt` to only include batches you have assemblies and compressed COBS indices for. E.g. to search only `asms/salmonella_enterica__81.asm.tar.xz` using the compressed index `cobs/salmonella_enterica__81.cobs_classic.xz`, you must modify the file to only include `salmonella_enterica__81`. Alternatively, you can create a new `.txt` file with one batch per line, and set the `batches` variable in `config.yaml` to the path of this new file.
@@ -158,8 +160,6 @@ quite light and usually start running as soon as they are scheduled.
 **For SLURM clusters:**
 1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/slurm).
 2. Configure you queries and run the full pipeline: `make cluster_slurm`;
-
-For additional info see the [additional info file](README.additional_info.md).
 
 ## 7. License
 
