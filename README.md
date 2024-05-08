@@ -19,37 +19,6 @@ to align batches of queries to them by
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10828248.svg)](https://doi.org/10.5281/zenodo.10828248)
 [![CI Tests](https://github.com/karel-brinda/phylign/actions/workflows/ci.yaml/badge.svg)](https://github.com/karel-brinda/phylign/actions/)
 
-<h2>Contents</h2>
-
-<!-- vim-markdown-toc GFM -->
-
-* [1. Introduction](#1-introduction)
-  * [Citation](#citation)
-* [2. Requirements](#2-requirements)
-  * [2a) Hardware](#2a-hardware)
-  * [2b) Dependencies](#2b-dependencies)
-* [3. Installation](#3-installation)
-  * [3a) Step 1: Install dependencies](#3a-step-1-install-dependencies)
-  * [3b) Step 2: Clone the repository](#3b-step-2-clone-the-repository)
-* [4. Usage](#4-usage)
-  * [4a) Step 1: Copy or symlink the assemblies](#4a-step-1-copy-or-symlink-the-assemblies)
-  * [4b) Step 2: Copy or symlink the compressed COBS indices](#4b-step-1-copy-or-symlink-the-compressed-cobs-indices)
-  * [4c) Step 3: Copy or symlink your queries](#4c-step-1-copy-or-symlink-your-queries)
-  * [4d) Step 4: Adjust configuration](#4d-step-2-adjust-configuration)
-  * [4e) Step 5: Clean up intermediate files](#4e-step-3-clean-up-intermediate-files)
-  * [4f) Step 6: Run the pipeline](#4f-step-4-run-the-pipeline)
-  * [4g) Step 7: Analyze your results](#4g-step-5-analyze-your-results)
-* [5. Additional information](#5-additional-information)
-  * [5a) List of workflow commands](#5a-list-of-workflow-commands)
-  * [5b) Directories](#5b-directories)
-  * [5c) Querying a subset of the AllTheBacteria dataset](#5c-querying-a-subset-of-the-allthebacteria-dataset)
-  * [5d) File formats](#5d-file-formats)
-  * [5e) Running on a cluster](#5e-running-on-a-cluster)
-  * [5f) Known limitations](#5f-known-limitations)
-* [6. License](#6-license)
-* [7. Contacts](#7-contacts)
-
-<!-- vim-markdown-toc -->
 
 
 ## 1. Introduction
