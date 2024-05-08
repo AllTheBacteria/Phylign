@@ -158,7 +158,7 @@ quite light and usually start running as soon as they are scheduled.
 2. Configure you queries and run the full pipeline: `make cluster_lsf`;
 
 **For SLURM clusters:**
-1. Setup the snakemake LSF profile described [here](https://github.com/Snakemake-Profiles/slurm).
+1. Setup the snakemake SLURM profile described [here](https://github.com/Snakemake-Profiles/slurm).
 2. Configure you queries and run the full pipeline: `make cluster_slurm`;
 
 ## 7. License
