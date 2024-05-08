@@ -100,7 +100,7 @@ conda env create -f environment.yaml && conda activate phylign
 
 ## 4. Usage
 
-**Default usage is to run locally and use all available CPUs. This is going to be very slow if you it on a laptop. A 48-core machine brings it down to an hour or so to query a single gene. ** How to run on a cluster is described in point 6 below.
+**Default usage is to run locally using 8 CPUs. This is going to be very slow if you it on a laptop. A 48-core machine brings it down to an hour or so to query a single gene. ** How to run on a cluster is described in point 6 below.
 
 ### 4a) Step 1: Copy or symlink the assemblies
 
