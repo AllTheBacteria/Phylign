@@ -30,7 +30,7 @@ The central idea behind Phylign is
  - decompress the candidate genomes and then align to them using minimap.
 
 
-**In short** to do this, you will to clone this repo and place the assembly batches and the COBs (*k*-mer) indices in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in a couple of hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
+**In short** to do this, you will to clone this repo and place the assembly batches and the COBs (*k*-mer) indices in the right place. You put your queries in the right place and then run `make` and Snakemake will execute the search, either locally (on the laptop/server you are using) or on a cluster. In our tests, you can search the 2 million genomes locally in 30mins-2 hours (depends on number of hits) if you have a 48 core machine, or in say 30 minutes if you have a compute cluster.
 
 
 ## 2. Requirements
